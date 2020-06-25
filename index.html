@@ -1,24 +1,83 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Weather Dashboard</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
 </head>
 
 <body>
-    <section class="section">
-        <div class="container">
-            <h1 class="title">
-                Hello World
-            </h1>
-            <p class="subtitle">
-                My first website with <strong>Bulma</strong>!
-            </p>
+    <section class="hero is-light">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    Weather Dashboard
+                </h1>
+            </div>
         </div>
     </section>
+
+    <section id="info-section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-one-quarter content">
+                    <h3>Search for a City:</h3>
+                    <div class="field">
+                        <div class="control">
+                            <input id="city-input" class="input is-info" type="text" placeholder="City name">
+                        </div>
+                        <button id="search-button" class="button is-info">Search</button>
+                    </div>
+                </div>
+                <!-- Space for data return from query -->
+                <div class="box radius-large">
+                    <div id="weather-data" class="column content">
+                        <h2 id="city-name"></h2>
+                        <h4 id="city-cond"></h4>
+                        <h4 id="temp"></h4>
+                        <h4 id="humidity"></h4>
+                        <h4 id="wind-speed"></h4>
+                        <h4 id="uv-index"></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- list of past searched cities -->
+    <section>
+        <div class="table-container">
+            <table class="table is-bordered">
+                <tr id="cityList">
+
+                </tr>
+                <!-- Your table content -->
+            </table>
+
+
+    </section>
+
+    <!-- <div id="forecast" class="card ">
+
+        <div class="card-content card-background-color-is-info ">
+            <p class="title">
+                Day One
+            </p>
+            
+        </div>
+        
+    </div> -->
+
+
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
