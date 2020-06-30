@@ -2,3 +2,9 @@
 
     padding-top: 15px;
 }
+
+.card {
+
+    background-color: mediumblue;
+    margin: 3px;
+}
