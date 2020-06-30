@@ -23,11 +23,11 @@ $("#search-button").on("click", function(event) {
     console.log(citySelection)
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + citySelection + "&units=imperial&appid=42d98d76405f5b8038f2ad71187af430";
     console.log(queryURL);
-    // var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + citySelection + "&units=imperial&appid=42d98d76405f5b8038f2ad71187af430";
-    // var queryURL3 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + latitude + "&lon=" + longitude + "&exclude=minutely,hourly" + "&units=imperial&appid=42d98d76405f5b8038f2ad71187af430";
+    let coords = [];
     let cities = document.querySelector("#city-input").value;
     console.log(cities);
     localStorage.setItem("cities", JSON.stringify(cities));
+
 
 
     $.ajax({
@@ -35,12 +35,15 @@ $("#search-button").on("click", function(event) {
         method: "GET"
     }).then(function (response) {
         console.log(response);
+        coords.push(response.coord.lat);
+        coords.push(response.coord.lon);
         let cityName = response.name;
         let cityCond = response.weather[0].description;
         let cityTemp = response.main.temp;      
         let cityHum = response.main.humidity;
         let cityWind = response.wind.speed;
-        $("#city-name").text(cityName + " " + "(" + NowMoment + ")");
+        let icon = response.weather[0].icon;
+        $("#city-name").html(cityName + " " + "(" + NowMoment + ") <br> <img src=\"http: //openweathermap.org/img/wn/ " + icon + "@2x.png");
         $("#city-cond").text("Current Conditions: " + cityCond);
         $("#temp").text("Temperature (F): " + cityTemp.toFixed(1));
         $("#humidity").text("Humidity: " + cityHum + "%");
@@ -50,22 +53,28 @@ $("#search-button").on("click", function(event) {
         $("#date3").text(day3);
         $("#date4").text(day4);
         $("#date5").text(day5);
+        console.log(icon)
+        getUV(response.coord.lat, response.coord.lon);
     });
+    console.log(coords);
+
+    function getUV(lat, lon) {
+        console.log(lat, lon)
+        var queryURL3 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=minutely,hourly" + "&units=imperial&appid=42d98d76405f5b8038f2ad71187af430";
+        $.ajax({
+            url: queryURL3,
+            method: "GET"
+        }).then(function (response) {
+            console.log(response);
+        })
+    }
     
-    // $.ajax({
-    //     url: queryURL3,
-    //     method: "GET"
-    // }).then(function (response) {
-    //     console.log(response);
-    //     console.log(response.list.length);
-    // for (let i = 0; i < response.list.length; i++) {
-        
-    // })
     
     var pastCities = JSON.parse(localStorage.getItem("cities"));
     console.log(pastCities)
-    $("#cityList").prepend("<td>" + pastCities + "</td>");
+    $("#cityList").prepend("<tr><td>" + pastCities + "</td></tr>");
 
-    })
+
+})
     
 
