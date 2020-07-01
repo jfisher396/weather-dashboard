@@ -43,7 +43,7 @@ $("#search-button").on("click", function (event) {
         let cityHum = response.main.humidity;
         let cityWind = response.wind.speed;
         let icon = response.weather[0].icon;
-        $("#icon").html(`<img src="http://openweathermap.org/img/wn/${icon}@2x.png">`)
+        $("#icon").html(`<img src="http://openweathermap.org/img/wn/${icon}@2x.png">`);
         $("#city-name").html(cityName + " " + "(" + NowMoment + ")");
         $("#city-cond").text("Current Conditions: " + cityCond);
         $("#temp").text("Temperature (F): " + cityTemp.toFixed(1));
@@ -67,16 +67,25 @@ $("#search-button").on("click", function (event) {
             method: "GET"
         }).then(function (response) {
             console.log(response);
+            //forecast temp variables
             let day1temp = response.daily[1].temp.max;
             let day2temp = response.daily[2].temp.max;
             let day3temp = response.daily[3].temp.max;
             let day4temp = response.daily[4].temp.max;
             let day5temp = response.daily[5].temp.max;
+            //forecast humidity variables
             let day1hum = response.daily[1].humidity;
             let day2hum = response.daily[2].humidity;
             let day3hum = response.daily[3].humidity;
             let day4hum = response.daily[4].humidity;
             let day5hum = response.daily[5].humidity;
+            //forecast weather icon variables
+            let icon1 = response.daily[1].weather[0].icon;
+            let icon2 = response.daily[2].weather[0].icon;
+            let icon3 = response.daily[3].weather[0].icon;
+            let icon4 = response.daily[4].weather[0].icon;
+            let icon5 = response.daily[5].weather[0].icon;
+            //
             $("#temp1").text("Temp(F):" + " " + day1temp.toFixed(1));
             $("#temp2").text("Temp(F):" + " " + day2temp.toFixed(1));
             $("#temp3").text("Temp(F):" + " " + day3temp.toFixed(1));
@@ -87,7 +96,12 @@ $("#search-button").on("click", function (event) {
             $("#hum3").text("Hum:" + " " + day3hum + "%");
             $("#hum4").text("Hum:" + " " + day4hum + "%");
             $("#hum5").text("Hum:" + " " + day5hum + "%");
-            console.log(day1hum)
+            $("#icon1").html(`<img src="http://openweathermap.org/img/wn/${icon1}@2x.png">`);
+            $("#icon2").html(`<img src="http://openweathermap.org/img/wn/${icon2}@2x.png">`);
+            $("#icon3").html(`<img src="http://openweathermap.org/img/wn/${icon3}@2x.png">`);
+            $("#icon4").html(`<img src="http://openweathermap.org/img/wn/${icon4}@2x.png">`);
+            $("#icon5").html(`<img src="http://openweathermap.org/img/wn/${icon5}@2x.png">`);
+            console.log(icon1)
             
         })
     }
