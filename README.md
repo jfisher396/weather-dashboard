@@ -2,4 +2,6 @@
 
 A portal for checking the weather of any given city.
 
-https://github.com/jfisher396/weather-dashboard/blob/master/Weather-dashboard.png
+Enter a city name and click the search button to see current weather conditions for the selected city as well as the five-day forecast.  
+
+
