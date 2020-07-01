@@ -1,9 +1,5 @@
 //TODO:create list for past search items
 //TODO:link UV index
-//TODO:get icons to show
-//TODO:setup local storage
-
-
 
 //Pulls the current date
 let NowMoment = moment().format("l");
@@ -15,8 +11,7 @@ let day3 = moment().add(3, 'days').format('l');
 let day4 = moment().add(4, 'days').format('l');
 let day5 = moment().add(5, 'days').format('l');
 
-
-// searches the API for the chosen city
+// searches the API's for the chosen city
 $("#search-button").on("click", function (event) {
     event.preventDefault();
     var citySelection = $("#city-input").val();
@@ -26,11 +21,9 @@ $("#search-button").on("click", function (event) {
     console.log(queryURL);
     let coords = [];
     let cities = document.querySelector("#city-input").value;
-    console.log(cities);
     localStorage.setItem("cities", JSON.stringify(cities));
-
-
-
+    console.log(cities);
+    
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -68,6 +61,19 @@ $("#search-button").on("click", function (event) {
             method: "GET"
         }).then(function (response) {
             console.log(response);
+            //code to determine UV index severity
+            let uvIndex = response.current.uvi;
+            $("#uv-index").text("UV Index:" + " " + uvIndex)
+            if (uvIndex >= 8) { 
+                $("#uv-index").css("color", "red")
+                console.log("high")
+            } else if (uvIndex > 4 && uvIndex < 8) {
+                $("#uv-index").css("color", "yellow")
+                console.log("moderate")
+            } else {
+                $("#uv-index").css("color", "green")
+                console.log("low")
+            };
             //forecast temp variables
             let day1temp = response.daily[1].temp.max;
             let day2temp = response.daily[2].temp.max;
@@ -104,14 +110,15 @@ $("#search-button").on("click", function (event) {
             $("#icon3").html(`<img src="http://openweathermap.org/img/wn/${icon3}@2x.png">`);
             $("#icon4").html(`<img src="http://openweathermap.org/img/wn/${icon4}@2x.png">`);
             $("#icon5").html(`<img src="http://openweathermap.org/img/wn/${icon5}@2x.png">`);
-            console.log(icon1)
+        
             
         })
     }
-
-
     var pastCities = JSON.parse(localStorage.getItem("cities"));
     $("#cityList").prepend("<tr><td>" + pastCities + "</td></tr>");
+    console.log(cities);
 
+
+    
 
 })
