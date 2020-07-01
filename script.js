@@ -43,7 +43,8 @@ $("#search-button").on("click", function(event) {
         let cityHum = response.main.humidity;
         let cityWind = response.wind.speed;
         let icon = response.weather[0].icon;
-        $("#city-name").html(cityName + " " + "(" + NowMoment + ") <br> <img src=\"http: //openweathermap.org/img/wn/ " + icon + "@2x.png");
+        $("#icon").html(`<img src="http://openweathermap.org/img/wn/${icon}@2x.png">`)
+        $("#city-name").html(cityName + " " + "(" + NowMoment + ")");
         $("#city-cond").text("Current Conditions: " + cityCond);
         $("#temp").text("Temperature (F): " + cityTemp.toFixed(1));
         $("#humidity").text("Humidity: " + cityHum + "%");
