@@ -8,6 +8,7 @@
 //Pulls the current date
 let NowMoment = moment().format("l");
 let displayDate = document.getElementById('currentDay');
+//adds days to moment for forecast
 let day1 = moment().add(1, 'days').format('l');
 let day2 = moment().add(2, 'days').format('l');
 let day3 = moment().add(3, 'days').format('l');
@@ -91,11 +92,13 @@ $("#search-button").on("click", function (event) {
             $("#temp3").text("Temp(F):" + " " + day3temp.toFixed(1));
             $("#temp4").text("Temp(F):" + " " + day4temp.toFixed(1));
             $("#temp5").text("Temp(F):" + " " + day5temp.toFixed(1));
+
             $("#hum1").text("Hum:" + " " + day1hum + "%");
             $("#hum2").text("Hum:" + " " + day2hum + "%");
             $("#hum3").text("Hum:" + " " + day3hum + "%");
             $("#hum4").text("Hum:" + " " + day4hum + "%");
             $("#hum5").text("Hum:" + " " + day5hum + "%");
+            
             $("#icon1").html(`<img src="http://openweathermap.org/img/wn/${icon1}@2x.png">`);
             $("#icon2").html(`<img src="http://openweathermap.org/img/wn/${icon2}@2x.png">`);
             $("#icon3").html(`<img src="http://openweathermap.org/img/wn/${icon3}@2x.png">`);
