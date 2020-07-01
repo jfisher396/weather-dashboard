@@ -16,10 +16,10 @@ let day5 = moment().add(5, 'days').format('l');
 
 
 // searches the API for the chosen city
-$("#search-button").on("click", function(event) {
+$("#search-button").on("click", function (event) {
     event.preventDefault();
     var citySelection = $("#city-input").val();
-   
+
     console.log(citySelection)
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + citySelection + "&units=imperial&appid=42d98d76405f5b8038f2ad71187af430";
     console.log(queryURL);
@@ -39,7 +39,7 @@ $("#search-button").on("click", function(event) {
         coords.push(response.coord.lon);
         let cityName = response.name;
         let cityCond = response.weather[0].description;
-        let cityTemp = response.main.temp;      
+        let cityTemp = response.main.temp;
         let cityHum = response.main.humidity;
         let cityWind = response.wind.speed;
         let icon = response.weather[0].icon;
@@ -57,8 +57,8 @@ $("#search-button").on("click", function(event) {
         console.log(icon)
         getUV(response.coord.lat, response.coord.lon);
     });
-    console.log(coords);
 
+    //Function to get 5-day forecast and UV index and put them on page
     function getUV(lat, lon) {
         console.log(lat, lon)
         var queryURL3 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=minutely,hourly" + "&units=imperial&appid=42d98d76405f5b8038f2ad71187af430";
@@ -67,15 +67,34 @@ $("#search-button").on("click", function(event) {
             method: "GET"
         }).then(function (response) {
             console.log(response);
+            let day1temp = response.daily[1].temp.max;
+            let day2temp = response.daily[2].temp.max;
+            let day3temp = response.daily[3].temp.max;
+            let day4temp = response.daily[4].temp.max;
+            let day5temp = response.daily[5].temp.max;
+            let day1hum = response.daily[1].humidity;
+            let day2hum = response.daily[2].humidity;
+            let day3hum = response.daily[3].humidity;
+            let day4hum = response.daily[4].humidity;
+            let day5hum = response.daily[5].humidity;
+            $("#temp1").text("Temp(F):" + " " + day1temp.toFixed(1));
+            $("#temp2").text("Temp(F):" + " " + day2temp.toFixed(1));
+            $("#temp3").text("Temp(F):" + " " + day3temp.toFixed(1));
+            $("#temp4").text("Temp(F):" + " " + day4temp.toFixed(1));
+            $("#temp5").text("Temp(F):" + " " + day5temp.toFixed(1));
+            $("#hum1").text("Hum:" + " " + day1hum + "%");
+            $("#hum2").text("Hum:" + " " + day2hum + "%");
+            $("#hum3").text("Hum:" + " " + day3hum + "%");
+            $("#hum4").text("Hum:" + " " + day4hum + "%");
+            $("#hum5").text("Hum:" + " " + day5hum + "%");
+            console.log(day1hum)
+            
         })
     }
-    
-    
+
+
     var pastCities = JSON.parse(localStorage.getItem("cities"));
-    console.log(pastCities)
     $("#cityList").prepend("<tr><td>" + pastCities + "</td></tr>");
 
 
 })
-    
-
