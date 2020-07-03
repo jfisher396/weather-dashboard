@@ -12,3 +12,7 @@
 #weather-data {
     background-color: lightskyblue;
 }
+
+tr {
+    margin: 5px;
+}

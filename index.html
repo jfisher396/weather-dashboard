@@ -28,83 +28,90 @@
             <div class="columns">
                 <div class="column is-one-quarter content">
                     <h3>Search for a City:</h3>
-                    <div class="field">
-                        <div class="control">
-                            <input id="city-input" class="input is-info" type="text" placeholder="City name"></div>
-                        <button id="search-button" class="button is-info">Search</button>
-                        <!-- list of past searched cities -->
-                        <div class="box">
-                            <div class="table-container">
-                                <table id="cityList" class="table is-bordered">
+                    <form>
+                        <!-- <div class="field">
+                            <div class="control"> -->
+                        <input id="city-input" class="input is-info" type="text" placeholder="City name">
+                
 
-                                    <!-- Your table content -->
-                                </table>
-                            </div>
-                        </div>
+                <button id="submit" class="button is-info" type="submit">Search</button>
+                <!-- <input id="city-input" class="input is-info" type="text" placeholder="City name"></div>
+                            <div class="control">
+                            <button id="search-button" class="button is-info">Search</button> -->
+                <!-- </div>
+                        </div> -->
+                </form>
+                <!-- list of past searched cities -->
+                <div class="box">
+                    <div class="table-container">
+                        <table id="cityList" class="table is-bordered">
+                            <!-- Table data generated in javascript -->
+                        </table>
                     </div>
                 </div>
 
-                <!-- Space for data return from query -->
-                <div class="column">
-                    <div id="weather-data" class="columns box content">
-                        <div class="column">
-                            <h2 id="city-name"></h2>
-                            <h4 id="city-cond"></h4>
-                            <h4 id="temp"></h4>
-                            <h4 id="humidity"></h4>
-                            <h4 id="wind-speed"></h4>
-                            <h4 id="uv-index"></h4>
-                        </div>
-                        <div class="column">
-                            <div id="icon"></div>
-                        </div>
+            </div>
+
+            <!-- Space for data return from query -->
+            <div class="column">
+                <div id="weather-data" class="columns box content">
+                    <div class="column">
+                        <h2 id="city-name"></h2>
+                        <h4 id="city-cond"></h4>
+                        <h4 id="temp"></h4>
+                        <h4 id="humidity"></h4>
+                        <h4 id="wind-speed"></h4>
+                        <h4 id="uv-index"></h4>
                     </div>
-                    <!-- Forecast cards -->
-                    <div class="container">
-                        <div class="content">
-                            <h2>5-Day Forecast:</h2>
-                            <div class="columns">
-                                <div class="column card">
-                                    <div id="day1" class="card-content">
-                                        <h3 id="date1" class="has-text-white"></h3>
-                                        <div id="icon1"></div>
-                                        <h4 id="temp1" class="has-text-white"></h4>
-                                        <h4 id="hum1" class="has-text-white"></h4>
-                                    </div>
+                    <div class="column">
+                        <div id="icon"></div>
+                    </div>
+                </div>
+                <!-- Forecast cards -->
+                <div class="container">
+                    <div class="content">
+                        <h2>5-Day Forecast:</h2>
+                        <div class="columns">
+                            <div class="column card">
+                                <div id="day1" class="card-content">
+                                    <h3 id="date1" class="has-text-white"></h3>
+                                    <div id="icon1"></div>
+                                    <h4 id="temp1" class="has-text-white"></h4>
+                                    <h4 id="hum1" class="has-text-white"></h4>
                                 </div>
-                                <div class="column card">
+                            </div>
+                            <div class="column card">
 
-                                    <div id="day2" class="card-content">
-                                        <h3 id="date2" class="has-text-white"></h3>
-                                        <div id="icon2"></div>
-                                        <h4 id="temp2" class="has-text-white"></h4>
-                                        <h4 id="hum2" class="has-text-white"></h4>
-                                    </div>
+                                <div id="day2" class="card-content">
+                                    <h3 id="date2" class="has-text-white"></h3>
+                                    <div id="icon2"></div>
+                                    <h4 id="temp2" class="has-text-white"></h4>
+                                    <h4 id="hum2" class="has-text-white"></h4>
                                 </div>
-                                <div class="column card">
-                                    <div id="day3" class="card-content">
-                                        <h3 id="date3" class="has-text-white"></h3>
-                                        <div id="icon3"></div>
-                                        <h4 id="temp3" class="has-text-white"></h4>
-                                        <h4 id="hum3" class="has-text-white"></h4>
-                                    </div>
+                            </div>
+                            <div class="column card">
+                                <div id="day3" class="card-content">
+                                    <h3 id="date3" class="has-text-white"></h3>
+                                    <div id="icon3"></div>
+                                    <h4 id="temp3" class="has-text-white"></h4>
+                                    <h4 id="hum3" class="has-text-white"></h4>
                                 </div>
-                                <div class="column card">
-                                    <div id="day4" class="card-content">
-                                        <h3 id="date4" class="has-text-white"></h3>
-                                        <div id="icon4"></div>
-                                        <h4 id="temp4" class="has-text-white"></h4>
-                                        <h4 id="hum4" class="has-text-white"></h4>
-                                    </div>
+                            </div>
+                            <div class="column card">
+                                <div id="day4" class="card-content">
+                                    <h3 id="date4" class="has-text-white"></h3>
+                                    <div id="icon4"></div>
+                                    <h4 id="temp4" class="has-text-white"></h4>
+                                    <h4 id="hum4" class="has-text-white"></h4>
                                 </div>
-                                <div class="column card">
+                            </div>
+                            <div class="column card">
 
-                                    <div id="day5" class=" card-content">
-                                        <h3 id="date5" class="has-text-white"></h3>
-                                        <div id="icon5"></div>
-                                        <h4 id="temp5" class="has-text-white"></h4>
-                                        <h4 id="hum5" class="has-text-white"></h4>
-                                    </div>
+                                <div id="day5" class=" card-content">
+                                    <h3 id="date5" class="has-text-white"></h3>
+                                    <div id="icon5"></div>
+                                    <h4 id="temp5" class="has-text-white"></h4>
+                                    <h4 id="hum5" class="has-text-white"></h4>
                                 </div>
                             </div>
                         </div>
@@ -112,12 +119,8 @@
                 </div>
             </div>
         </div>
+        </div>
     </section>
-
-
-
-
-
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="script.js"></script>
