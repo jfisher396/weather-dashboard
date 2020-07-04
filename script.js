@@ -1,31 +1,25 @@
-// $(document).ready(function () {
-//Pulls the current date
-let NowMoment = moment().format("l");
-let displayDate = document.getElementById('currentDay');
-//adds days to moment for forecast
-let day1 = moment().add(1, 'days').format('l');
-let day2 = moment().add(2, 'days').format('l');
-let day3 = moment().add(3, 'days').format('l');
-let day4 = moment().add(4, 'days').format('l');
-let day5 = moment().add(5, 'days').format('l');
+$(document).ready(function () {
+    //Pulls the current date
+    let NowMoment = moment().format("l");
+    let displayDate = document.getElementById('currentDay');
+    //adds days to moment for forecast
+    let day1 = moment().add(1, 'days').format('l');
+    let day2 = moment().add(2, 'days').format('l');
+    let day3 = moment().add(3, 'days').format('l');
+    let day4 = moment().add(4, 'days').format('l');
+    let day5 = moment().add(5, 'days').format('l');
 
-const cityInput = document.querySelector("#submit");
-console.log(cityInput);
+    const cityInput = document.querySelector("#submit");
+    console.log(cityInput);
 
-cityInput.addEventListener("click", e => {
+    cityInput.addEventListener("click", e => {
         e.preventDefault();
         console.log("clicky");
         search();
     })
-
-
-
     // searches the API's for the chosen city
     function search() {
 
-
-        // $("#search-button").on("click", function (event) {
-        //     event.preventDefault();
         var citySelection = $("#city-input").val();
         console.log(citySelection);
         var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + citySelection + "&units=imperial&appid=42d98d76405f5b8038f2ad71187af430";
@@ -52,7 +46,7 @@ cityInput.addEventListener("click", e => {
             $("#icon").html(`<img src="http://openweathermap.org/img/wn/${icon}@2x.png">`);
             $("#city-name").html(cityName + " " + "(" + NowMoment + ")");
             $("#city-cond").text("Current Conditions: " + cityCond);
-            $("#temp").text("Temperature (F): " + cityTemp.toFixed(1));
+            $("#temp").text("Current Temp (F): " + cityTemp.toFixed(1));
             $("#humidity").text("Humidity: " + cityHum + "%");
             $("#wind-speed").text("Wind Speed: " + cityWind + "mph");
             $("#date1").text(day1);
@@ -86,6 +80,8 @@ cityInput.addEventListener("click", e => {
                     $("#uv-index").css("color", "green")
                     console.log("low")
                 };
+                let cityHigh = response.daily[0].temp.max;
+                $("#high").text("Expected high (F): " + " " + cityHigh);
                 //forecast temp variables
                 let day1temp = response.daily[1].temp.max;
                 let day2temp = response.daily[2].temp.max;
@@ -122,23 +118,25 @@ cityInput.addEventListener("click", e => {
                 $("#icon3").html(`<img src="http://openweathermap.org/img/wn/${icon3}@2x.png">`);
                 $("#icon4").html(`<img src="http://openweathermap.org/img/wn/${icon4}@2x.png">`);
                 $("#icon5").html(`<img src="http://openweathermap.org/img/wn/${icon5}@2x.png">`);
-
-
-            })
-        }
+            });
+        };
 
 
         var pastCities = JSON.parse(localStorage.getItem("cities"));
         $("#cityList").prepend("<tr><td>" + pastCities + "</td></tr>");
     }
-        const prevChoices = document.querySelectorAll("td");
+    const prevChoices = document.querySelectorAll("td");
 
     prevChoices.forEach(choice => {
         choice.addEventListener("click", e => {
             console.log("item clicked");
             console.log(e.target);
-        })
+        });
+
+
+    });
 })
+// function search()
 
 
-// })
+//End of line
