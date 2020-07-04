@@ -81,7 +81,7 @@ $(document).ready(function () {
                     console.log("low")
                 };
                 let cityHigh = response.daily[0].temp.max;
-                $("#high").text("Expected high (F): " + " " + cityHigh);
+                $("#high").text("Expected High (F): " + " " + cityHigh);
                 //forecast temp variables
                 let day1temp = response.daily[1].temp.max;
                 let day2temp = response.daily[2].temp.max;
