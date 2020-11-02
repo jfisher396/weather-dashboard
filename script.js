@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+
   //Pulls the current date
   let NowMoment = moment().format("l");
   
@@ -25,9 +26,8 @@ $(document).ready(function () {
             city = "Seattle";
             search();
         }
-        
     }
-
+ 
   loadLocalStorage()
 
   $("#submit").on("click", (e) => {
