@@ -12,34 +12,50 @@ $(document).ready(function () {
   let day5 = moment().add(5, "days").format("l");
 
   let city;
-  let cities = [];
+  let cities;
 
-    function loadLocalStorage() {
-        let lastSearch = localStorage.getItem("mostRecent");
+  function loadMostRecent() {
+    let lastSearch = localStorage.getItem("mostRecent");
 
-        if(lastSearch) {
-            console.log("city in storage")
-            city = lastSearch;
-            search()
-        } else {
-            console.log("no city in storage")
-            city = "Seattle";
-            search();
-        }
+    if (lastSearch) {
+      
+      city = lastSearch;
+      search();
+    } else {
+      
+      city = "Seattle";
+      search();
     }
- 
-  loadLocalStorage()
+  }
+
+  loadMostRecent()
+
+  function loadRecentCities() {
+      let recentCities = JSON.parse(localStorage.getItem("cities"));
+
+      if(recentCities) {
+
+          cities = recentCities;
+      } else {
+          
+          cities = [];
+      }
+  }
+
+  loadRecentCities()
 
   $("#submit").on("click", (e) => {
     e.preventDefault();
     getCity();
     search();
+    listCities()
   });
 
   function saveToLocalStorage() {
-    console.log(city)
+    console.log(cities)
     localStorage.setItem("mostRecent", city);
-    // localStorage.setItem("cities", JSON.stringify(cities));
+    cities.push(city)
+    localStorage.setItem("cities", JSON.stringify(cities));
   }
 
   function getCity() {
@@ -155,17 +171,29 @@ $(document).ready(function () {
       });
     }
 
-    // var pastCities = JSON.parse(localStorage.getItem("cities"));
-    // $("#cityList").prepend("<tr><td>" + pastCities + "</td></tr>");
+    
+    
   }
-  const prevChoices = document.querySelectorAll("td");
 
-//   prevChoices.forEach((choice) => {
-//     choice.on("click", (e) => {
-//       console.log("item clicked");
-//       console.log(e.target);
-//     });
-//   });
+  function listCities() {
+    $("#cityList").text("");
+    cities.forEach((city) => {
+    $("#cityList").prepend("<tr><td>" + city + "</td></tr>");
+  })
+  }
+
+  listCities()
+
+
+  const prevChoices = $("td");
+
+  prevChoices.on("click", (e) => {
+      e.preventDefault();
+      let listedCity = $(e.target).text();
+      city = listedCity;
+      search()
+    });
+ 
 });
 
 
