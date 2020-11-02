@@ -12,6 +12,10 @@ $(document).ready(function () {
     const cityInput = document.querySelector("#submit");
     console.log(cityInput);
 
+    document.addEventListener("DOMContentLoaded", function () {
+        search();
+    });
+
     cityInput.addEventListener("click", e => {
         e.preventDefault();
         console.log("clicky");
@@ -131,6 +135,7 @@ $(document).ready(function () {
         choice.addEventListener("click", e => {
             console.log("item clicked");
             console.log(e.target);
+            
         });
 
 

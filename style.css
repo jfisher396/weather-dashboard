@@ -1,18 +1,23 @@
 #info-section {
-
-    padding-top: 15px;
+  padding-top: 15px;
 }
 
-.card {
 
-    background-color: lightsteelblue;
-    margin: 3px;
-}
 
 #weather-data {
-    background-color: lightskyblue;
+  background-color: lightskyblue;
+}
+
+.current-city-data {
+  min-height: 300px;
 }
 
 tr {
-    margin: 5px;
+  margin: 5px;
+}
+
+.card {
+  background-color: lightsteelblue;
+  margin: 3px;
+  min-height: 300px;
 }
