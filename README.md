@@ -8,4 +8,4 @@ Enter a city name and click the search button or hit enter to see current weathe
 ---
 
 ## Visuals:
-![GitHub Logo](/media/Weather%20Dashboard.png)
+![GitHub Logo](/media/weather-dashboard.png)
