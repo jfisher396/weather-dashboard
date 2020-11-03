@@ -174,7 +174,7 @@ $(document).ready(function () {
   }
 
   function listCities() {
-      console.log(cities)
+     
     $("#cityList").text("");
     cities.forEach((city) => {
     $("#cityList").prepend("<tr><td>" + city + "</td></tr>");
@@ -194,7 +194,6 @@ $(document).ready(function () {
     });
  
     $("#clr-btn").click( () => {
-        console.log("clear button clicked");
         localStorage.removeItem("cities");
         loadRecentCities()
         listCities();
