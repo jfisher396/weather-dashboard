@@ -1,11 +1,13 @@
+body {
+  background-color: #d1d8e0;
+}
+
 #info-section {
   padding-top: 15px;
 }
 
-
-
 #weather-data {
-  background-color: lightskyblue;
+  background-color: #75c0f5;
 }
 
 .current-city-data {
@@ -17,7 +19,25 @@ tr {
 }
 
 .card {
-  background-color: lightsteelblue;
+  background-color: #a5b1c2;
   margin: 3px;
   min-height: 300px;
+}
+
+.hero {
+  background: #fa8231; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #eb3b5a,
+    #fa8231
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #eb3b5a,
+    #fa8231
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.title {
+  color: #fff;
 }
