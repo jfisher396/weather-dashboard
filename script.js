@@ -1,6 +1,5 @@
 $(document).ready(function () {
 
-
   //Pulls the current date
   let NowMoment = moment().format("l");
   
@@ -11,18 +10,16 @@ $(document).ready(function () {
   let day4 = moment().add(4, "days").format("l");
   let day5 = moment().add(5, "days").format("l");
 
+ //global variables
   let city;
   let cities;
-
+ //function to load most recently searched city from local storage
   function loadMostRecent() {
     let lastSearch = localStorage.getItem("mostRecent");
-
     if (lastSearch) {
-      
       city = lastSearch;
       search();
     } else {
-      
       city = "Seattle";
       search();
     }
@@ -30,38 +27,44 @@ $(document).ready(function () {
 
   loadMostRecent()
 
+//function to load recently searched cities from local storage
   function loadRecentCities() {
-      let recentCities = JSON.parse(localStorage.getItem("cities"));
+    let recentCities = JSON.parse(localStorage.getItem("cities"));
 
-      if(recentCities) {
-
-          cities = recentCities;
-      } else {
-          
-          cities = [];
-      }
+    if (recentCities) {
+      cities = recentCities;
+    } else {
+      cities = [];
+    }
   }
 
   loadRecentCities()
 
+  //event handler for search city button
   $("#submit").on("click", (e) => {
     e.preventDefault();
     getCity();
     search();
-    listCities();
     $("#city-input").val("");
+    listCities();
   });
 
+  //function to save searched cities to local storage
   function saveToLocalStorage() {
-    
     localStorage.setItem("mostRecent", city);
-    cities.push(city)
+    cities.push(city);
     localStorage.setItem("cities", JSON.stringify(cities));
   }
 
+  //function to retrieve user inputted city name
   function getCity() {
     city = $("#city-input").val();
-    saveToLocalStorage();
+    if (city && cities.includes(city) === false) {
+      saveToLocalStorage();
+      return city;
+    } else if (!city) {
+      alert("Please enter a valid city");
+    }
   }
 
 
@@ -172,32 +175,28 @@ $(document).ready(function () {
       });
     }
   }
-
+//function to render recently searched cities to page
   function listCities() {
-     
     $("#cityList").text("");
     cities.forEach((city) => {
-    $("#cityList").prepend("<tr><td>" + city + "</td></tr>");
-
-  })
+      $("#cityList").prepend("<tr><td>" + city + "</td></tr>");
+    });
   }
 
-  listCities()
-
-  const prevChoices = $("td");
-
-  prevChoices.on("click", (e) => {
-      e.preventDefault();
-      let listedCity = $(e.target).text();
-      city = listedCity;
-      search()
-    });
- 
-    $("#clr-btn").click( () => {
-        localStorage.removeItem("cities");
-        loadRecentCities()
-        listCities();
-    })
+  listCities();
+//event handler for recently searched cities in table
+  $(document).on("click", "td", (e) => {
+    e.preventDefault();
+    let listedCity = $(e.target).text();
+    city = listedCity;
+    search();
+  });
+//event handler for clear button
+  $("#clr-btn").click(() => {
+    localStorage.removeItem("cities");
+    loadRecentCities();
+    listCities();
+  });
 });
 
 
