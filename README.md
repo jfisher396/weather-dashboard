@@ -46,6 +46,7 @@ Developers are often tasked with retrieving data from another application's API 
 
 ## Visuals:
 
+
 ![Screenshot of load page](/media/weather-dashboard.png)
 
 
@@ -93,3 +94,4 @@ Here are the steps needed for doing that:
 
 Following a code review, your feature will be merged.
 
+=======
