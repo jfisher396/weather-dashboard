@@ -46,3 +46,15 @@ tr {
   width: 100%;
   margin-bottom: 20px;
 }
+
+@media only screen and (max-width: 599px) {
+
+  .column {
+    margin: 2px;
+    padding: 0 20px 0 20px;
+  }
+
+  .card-content {
+    padding: 20px;
+  }
+}
