@@ -17,9 +17,9 @@ A web-app for checking the current weather and 5-day forecast for a city.
 4. [License](#license)
 5. [Contributing](#contributing)
 
-## About
+### About
 
-    Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
+Developers are often tasked with retrieving data from another application's API and using it in the context of their own. Third-party APIs allow developers to access their data and functionality by making requests with specific parameters to a URL. Your challenge is to build a weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
 
 ### User Story
 
@@ -44,7 +44,7 @@ A web-app for checking the current weather and 5-day forecast for a city.
     THEN I am presented with the last searched city forecast 
 
 
-## Visuals:
+### Visuals:
 
 
 ![Screenshot of load page](/media/weather-dashboard.png)
@@ -79,7 +79,7 @@ git clone git@github.com:jfisher396/weather-dashboard.git
 
 ## License
 
-Built by James Fisher.
+Built by [James Fisher](https://jfisher396.github.io/james-fisher-web-developer/).
 This application is released under [MIT](assets/LICENSE.txt) license.
 
 ## Contributing
