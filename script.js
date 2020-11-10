@@ -1,3 +1,5 @@
+'use strict';
+
 $(document).ready(function () {
 
   //Pulls the current date
@@ -102,6 +104,8 @@ $(document).ready(function () {
       $("#date5").text(day5);
 
       getUV(response.coord.lat, response.coord.lon);
+    }).fail(function (){
+      alert("Could not get data")
     });
 
     //Function to get 5-day forecast and UV index and put them on page
