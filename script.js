@@ -80,7 +80,7 @@ $(document).ready(function () {
       url: queryURL,
       method: "GET",
     }).then(function (response) {
-      console.log(response.sys.country);
+      // console.log(response.sys.country);
       coords.push(response.coord.lat);
       coords.push(response.coord.lon);
       let cityName = response.name;
@@ -119,7 +119,7 @@ $(document).ready(function () {
         url: "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=minutely,hourly" + "&units=imperial&appid=42d98d76405f5b8038f2ad71187af430",
         method: "GET",
       }).then(function (response) {
-        console.log(response)
+        // console.log(response)
         //code to determine UV index severity
         let uvIndex = response.current.uvi;
         $("#uv-index").text("UV Index:" + " " + uvIndex);
