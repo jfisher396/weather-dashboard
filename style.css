@@ -1,6 +1,26 @@
+.hero {
+  background-color: #1a357c;
+  display: flex;
+  flex-direction: row;
+}
+
+.title-container {
+  background-color: #fff;
+  width: 135px;
+  height: 125px;
+  display: flex;
+  flex-direction: column-reverse;
+  padding: 5px;
+}
+
+.title {
+  color: #1a357c;
+  font-size: 25px;
+}
+
 .form-input {
-  margin: 0 auto;
-  width: 25%
+  /* margin: 0 auto; */
+  width: 25%;
 }
 #info-section {
   /* padding-top: 15px; */
@@ -41,14 +61,6 @@ tr {
   -moz-border-radius: 3px;
   -ms-border-radius: 3px;
   -o-border-radius: 3px;
-}
-
-.hero {
- 
-}
-
-.title {
-  color: rgb(46, 46, 46);
 }
 
 #submit {
