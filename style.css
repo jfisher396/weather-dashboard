@@ -11,7 +11,7 @@
 }
 
 .table-box {
-  background-color:#4b6584;
+  background-color: #4b6584;
 }
 
 tr {
@@ -48,7 +48,6 @@ tr {
 }
 
 @media only screen and (max-width: 599px) {
-
   .column {
     margin: 2px;
     padding: 0 20px 0 20px;
