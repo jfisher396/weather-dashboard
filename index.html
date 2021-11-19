@@ -20,6 +20,20 @@
         <div class="container">
           <h1 class="title">Weather Dashboard</h1>
         </div>
+        
+        <div class="control form-input">
+          
+            <input
+              id="city-input"
+              class="input is-info is-rounded is-focused"
+              type="text"
+              placeholder="Enter the name of a city"
+            />
+            <button id="submit" class="button is-info is-rounded" type="submit">
+              Get Weather
+            </button>
+          
+        </div>
       </div>
     </section>
 
@@ -27,17 +41,6 @@
       <div class="container">
         <div class="columns">
           <div class="column is-one-quarter content">
-            <form>
-              <input
-                id="city-input"
-                class="input is-info"
-                type="text"
-                placeholder="Enter the name of a city"
-              />
-              <button id="submit" class="button is-info" type="submit">
-                Get Weather
-              </button>
-            </form>
             <!-- list of past searched cities -->
             <div class="box table-box">
               <div class="table-container">
@@ -63,6 +66,7 @@
                 <h4 id="uv-index"></h4>
               </div>
               <div class="column">
+                <!-- current weather icon goes here -->
                 <div id="icon"></div>
               </div>
             </div>
